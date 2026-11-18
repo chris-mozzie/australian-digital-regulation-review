@@ -23,7 +23,8 @@ export const tests = [
   ['Rights impact', 'What lawful activity, privacy, anonymity, expression or procedural fairness would be affected?'],
   ['Economic impact', 'What will government, business and citizens spend, and what productive activity will be displaced?'],
   ['Safeguards', 'Who authorises, audits and reviews the power, and what remedy exists when government is wrong?'],
-  ['Sunset', 'When does the power expire unless Parliament proves it remains necessary and effective?']
+  ['Sunset', 'When does the power expire unless Parliament proves it remains necessary and effective?'],
+  ['Outcomes', 'What does success look like, who measures it, and how will Parliament know whether the law actually worked?']
 ];
 
 export const issues = [
