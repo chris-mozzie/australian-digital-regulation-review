@@ -1,16 +1,15 @@
-# Australian Digital Regulation Review V3
+# Australian Citizen — Digital Regulation Review V4
 
-A Tier-1 policy review site built with Astro and configured for Cloudflare Workers.
+Independent public-interest policy site built with Astro and configured for Cloudflare Workers.
 
-## V3 position
-The site recommends pausing the Online Safety Amendment in its current form, renovating Australia's digital regulatory foundations, rebuilding trust and then demonstrating which additional powers are necessary.
+## Brand
+V4 introduces the Australian Citizen identity supplied by the project owner. The palette is derived from the logo: deep midnight/navy, Australian blue and muted gold, with restrained cream and ice backgrounds. The layout keeps the institutional clarity of a Tier-1 public-policy publication without presenting as an Australian Government website.
 
-## Deploy
-Cloudflare Workers Builds:
+## Position
+Pause the Online Safety Amendment in its current form. Map and renovate Australia's fragmented digital regulatory foundations, strengthen citizen privacy and review rights, rebuild trust, then establish which additional powers are demonstrably necessary.
+
+## Cloudflare Workers Builds
 - Build command: `npx astro build`
 - Deploy command: `npx wrangler deploy`
 
-`wrangler.jsonc` uses the current Astro Cloudflare server entrypoint.
-
-## Branding
-This is not an Australian Government website. The Commonwealth Coat of Arms is intentionally omitted because it signifies Commonwealth authority and may require PM&C permission for third-party use.
+`wrangler.jsonc` retains the corrected Astro Cloudflare server entrypoint.
