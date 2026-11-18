@@ -1,1 +1,12 @@
-{"name":"australia-regulatory-review","main":"dist/_worker.js/index.js","compatibility_date":"2026-11-18","assets":{"directory":"dist","binding":"ASSETS"}}
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "australian-digital-regulation-review",
+  "main": "@astrojs/cloudflare/entrypoints/server",
+  "compatibility_date": "2026-11-18",
+  "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
+  "assets": {
+    "binding": "ASSETS",
+    "directory": "./dist"
+  },
+  "observability": { "enabled": true }
+}
