@@ -1,17 +1,204 @@
 ---
-import Base from '../layouts/Base.astro'; import {pillars,findings,principles,refs} from '../data/content.js';
+import Base from '../layouts/Base.astro';
+import { pillars, foundations, tests, issues, roadmap, refs } from '../data/content.js';
 ---
-<Base>
-<a class="skip" href="#main">Skip to content</a>
-<header class="mast"><div class="wrap identity"><div class="mark" aria-hidden="true"><span>★</span><b>AU</b></div><div><div class="eyebrow">INDEPENDENT PUBLIC INTEREST REVIEW</div><div class="agency">Australian Digital Regulation Review</div><div class="subagency">Freedom • Innovation • Enterprise • Accountable Government</div></div></div></header>
-<nav><div class="wrap nav"><a href="#review">The review</a><a href="#bill">Online safety</a><a href="#system">Regulatory system</a><a href="#reform">Reform agenda</a><a href="#sources">Sources</a></div></nav>
-<main id="main">
-<section class="hero" id="review"><div class="wrap hero-grid"><div><div class="eyebrow gold">PUBLIC INTEREST PAPER • NOVEMBER 2026</div><h1>Safer online.<br><span>Freer by design.</span></h1><p class="lead">Australia can protect children and citizens from genuine digital harm without building a regulatory state that depends on ever broader access, duplicated compliance and blind trust in government.</p><div class="actions"><a class="btn" href="#bill">Explore the findings</a><a class="textlink" href="#sources">Read primary sources →</a></div></div><aside class="brief"><div>THE CENTRAL TEST</div><blockquote>Would we still grant this power if it were exercised by the government we trust least?</blockquote><p>Good institutions do not require perfect officials. They remain trustworthy when people are mistaken, compromised, politically motivated or corrupt.</p></aside></div></section>
-<section class="band"><div class="wrap pillars">{pillars.map(([h,p])=><article><h3>{h}</h3><p>{p}</p></article>)}</div></section>
-<section class="wrap section" id="bill"><div class="kicker">01 • THE TRIGGER</div><h2>The Online Safety Amendment deserves serious scrutiny</h2><p class="intro">The bill has legitimate safety objectives, but it materially expands the architecture around platform risk assessment, mitigation and regulatory enforcement. The issue is not whether online harm exists. It is whether the powers, incentives and information flows are proportionate and safely constrained.</p><div class="fact"><b>Status</b><span>Before the Senate. Senate committee report due 20 November 2026.</span><a href={refs[1][2]}>Parliamentary record →</a></div><div class="cards">{findings.slice(0,3).map(([h,f,a])=><article><span class="num">FINDING</span><h3>{h}</h3><p>{f}</p><hr><strong>Review position</strong><p>{a}</p></article>)}</div></section>
-<section class="dark" id="system"><div class="wrap section"><div class="kicker pale">02 • THE SYSTEM</div><h2>One power is not the whole picture</h2><p class="intro pale">Privacy, online safety, AI, digital identity, cyber security, telecommunications, financial regulation and national security increasingly act on the same people, systems and evidence.</p><div class="system-grid"><div class="stack"><span>ONLINE SAFETY</span><span>PRIVACY</span><span>AI GOVERNANCE</span><span>CYBER / SOCI</span><span>DIGITAL IDENTITY</span><span>SURVEILLANCE</span></div><div class="arrow">→</div><div class="citizen"><b>CITIZEN<br>& BUSINESS</b><small>Repeated obligations<br>Connected datasets<br>Higher compliance cost<br>Growing state capability</small></div></div><div class="cards darkcards">{findings.slice(3).map(([h,f,a])=><article><h3>{h}</h3><p>{f}</p><strong>Approach</strong><p>{a}</p></article>)}</div></div></section>
-<section class="wrap section" id="reform"><div class="kicker">03 • THE ALTERNATIVE</div><h2>Consolidate administration. Distribute power. Strengthen review.</h2><p class="intro">Government should feel integrated to the citizen without the citizen becoming fully visible to government.</p><div class="principles">{principles.map((p,i)=><div><b>{String(i+1).padStart(2,'0')}</b><span>{p}</span></div>)}</div><div class="architecture"><h3>Privacy-preserving government architecture</h3><div class="flow"><div>Authorised case<br><small>purpose + legislation</small></div><i>→</i><div>Policy gateway<br><small>least privilege</small></div><i>→</i><div>Federated source<br><small>ATO / health / identity</small></div><i>→</i><div>Minimum answer<br><small>yes/no/attribute</small></div><i>→</i><div>Immutable audit<br><small>independent review</small></div></div></div></section>
-<section class="service"><div class="wrap section"><div class="kicker">04 • PUBLIC SERVICE</div><h2>Authority is a responsibility to serve, not a privilege to command.</h2><div class="columns"><div><h3>Citizen-first administration</h3><p>One front door, plain-language requirements, assistance before punitive enforcement for honest mistakes, published service levels and meaningful reasons for consequential decisions.</p></div><div><h3>Review as a right</h3><p>Human reconsideration, accessible Ombudsman review, merits review where appropriate and judicial review must not depend on the original decision-maker deciding that scrutiny is warranted.</p></div><div><h3>Worst-case engineering</h3><p>Use separation of duties, time-bound authority, independent approval, immutable logs, anomaly detection, data minimisation and statutory deletion.</p></div></div></div></section>
-<section class="wrap section" id="sources"><div class="kicker">05 • EVIDENCE</div><h2>Primary sources</h2><p class="intro">This review is independent commentary. It is not an Australian Government publication. Claims should be tested against primary legislation, parliamentary material and regulator publications.</p><div class="sources">{refs.map(([org,title,url],i)=><a href={url} target="_blank" rel="noopener"><span>{String(i+1).padStart(2,'0')}</span><div><b>{org}</b><p>{title}</p></div><i>↗</i></a>)}</div></section>
-</main><footer><div class="wrap"><strong>Australian Digital Regulation Review</strong><p>Independent public-interest analysis • Not affiliated with or endorsed by the Australian Government.</p><p class="legal">Branding note: this site intentionally does not reproduce the Commonwealth Coat of Arms. PM&C states that the Arms signify Commonwealth authority and ownership, and third-party use may require written permission.</p></div></footer>
+<Base title="Fix the Foundations | Australian Digital Regulation Review" description="Independent public-interest review of the Online Safety Amendment and Australia's digital regulatory foundations.">
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="mast">
+    <div class="wrap identity">
+      <div class="mark" aria-hidden="true"><span>★</span><b>AU</b></div>
+      <div>
+        <div class="eyebrow">INDEPENDENT PUBLIC INTEREST REVIEW</div>
+        <div class="agency">Australian Digital Regulation Review</div>
+        <div class="subagency">Freedom • Innovation • Enterprise • Accountable Government</div>
+      </div>
+    </div>
+  </header>
+
+  <nav aria-label="Primary navigation">
+    <div class="wrap nav">
+      <a href="#position">Our position</a>
+      <a href="#amendment">The amendment</a>
+      <a href="#foundations">Fix first</a>
+      <a href="#roadmap">Reform sequence</a>
+      <a href="#sources">Evidence</a>
+    </div>
+  </nav>
+
+  <main id="main">
+    <section class="hero" id="position">
+      <div class="wrap hero-grid">
+        <div>
+          <div class="eyebrow gold">PUBLIC INTEREST PAPER • VERSION 3 • NOVEMBER 2026</div>
+          <h1>Fix the foundations<br /><span>before expanding the power.</span></h1>
+          <p class="lead">Do not proceed with the Online Safety Amendment in its current form. Australia should pause, repair its fragmented digital regulatory foundations, rebuild public trust and then prove which additional powers are genuinely necessary.</p>
+          <div class="actions">
+            <a class="btn" href="#amendment">Why we should pause</a>
+            <a class="textlink" href="#roadmap">See the six-stage alternative →</a>
+          </div>
+        </div>
+        <aside class="brief">
+          <div>THE CENTRAL TEST</div>
+          <blockquote>Would we still grant this power if it were exercised by the government we trust least?</blockquote>
+          <p>Good institutions do not require perfect officials. They remain trustworthy when people are mistaken, compromised, politically motivated or corrupt.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="decision-strip">
+      <div class="wrap decision-grid">
+        <div><span>RECOMMENDATION</span><strong>Pause the amendment</strong></div>
+        <p>Protecting children and addressing serious online harm are legitimate public goals. Urgency does not remove the obligation to prove necessity, proportionality, effectiveness and the absence of a less intrusive alternative.</p>
+      </div>
+    </section>
+
+    <section class="band" aria-label="Review values">
+      <div class="wrap pillars">
+        {pillars.map(([heading, text]) => (
+          <article><h3>{heading}</h3><p>{text}</p></article>
+        ))}
+      </div>
+    </section>
+
+    <section class="wrap section" id="amendment">
+      <div class="kicker">01 • THE IMMEDIATE PROBLEM</div>
+      <h2>A significant new power on foundations that already need renovation</h2>
+      <p class="intro">The problem is not the stated safety objective. The problem is adding a broad new duty, enforcement architecture and information expectations before Australia has mapped existing authority, removed overlap, secured citizen data and guaranteed meaningful review.</p>
+
+      <div class="position-card">
+        <div><b>OUR POSITION</b><h3>Do not proceed in the current form.</h3></div>
+        <p>Return only after an independent foundation review demonstrates what existing law cannot achieve and identifies the precise residual power required.</p>
+      </div>
+
+      <div class="issue-grid">
+        {issues.map(([heading, text], index) => (
+          <article>
+            <span>{String(index + 1).padStart(2, '0')}</span>
+            <h3>{heading}</h3>
+            <p>{text}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="dark" id="foundations">
+      <div class="wrap section">
+        <div class="kicker pale">02 • RENOVATE BEFORE EXTENDING</div>
+        <h2>Repair the institutional foundations first</h2>
+        <p class="intro pale">Australia should be able to protect people online without normalising duplicated bureaucracy, broad data access, weak contestability or a whole-of-citizen view.</p>
+        <div class="foundation-list">
+          {foundations.map(([heading, text], index) => (
+            <article>
+              <b>{String(index + 1).padStart(2, '0')}</b>
+              <div><h3>{heading}</h3><p>{text}</p></div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="wrap section" id="burden">
+      <div class="kicker">03 • SHIFT THE BURDEN OF PROOF</div>
+      <h2>Government must justify intervention</h2>
+      <p class="intro">Citizens should not have to prove why government should leave lawful activity alone. Before creating significant digital power, government should answer these questions publicly.</p>
+      <div class="test-table" role="list">
+        {tests.map(([heading, text], index) => (
+          <div role="listitem"><b>{String(index + 1).padStart(2, '0')}</b><strong>{heading}</strong><p>{text}</p></div>
+        ))}
+      </div>
+    </section>
+
+    <section class="comparison">
+      <div class="wrap section">
+        <div class="kicker">04 • CHANGE THE LEGISLATIVE INSTINCT</div>
+        <h2>Replace reaction with disciplined reform</h2>
+        <div class="compare-grid">
+          <article class="bad">
+            <span>CURRENT INSTINCT</span>
+            <h3>Concern → pressure → new power</h3>
+            <ol>
+              <li>High-profile harm</li><li>Media and political pressure</li><li>Rapid legislation</li><li>New regulator, report or power</li><li>More complexity and data collection</li><li>The next problem triggers another layer</li>
+            </ol>
+          </article>
+          <article class="good">
+            <span>BETTER APPROACH</span>
+            <h3>Evidence → repair → necessity</h3>
+            <ol>
+              <li>Define and measure the harm</li><li>Map existing laws and powers</li><li>Identify implementation failure</li><li>Remove duplicated administration</li><li>Test rights, cost and alternatives</li><li>Legislate only the remaining gap</li>
+            </ol>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="wrap section" id="roadmap">
+      <div class="kicker">05 • THE SIX-STAGE ALTERNATIVE</div>
+      <h2>Pause. Map. Consolidate. Protect. Rebuild trust. Justify.</h2>
+      <div class="roadmap">
+        {roadmap.map(([number, heading, text]) => (
+          <article><b>{number}</b><div><h3>{heading}</h3><p>{text}</p></div></article>
+        ))}
+      </div>
+    </section>
+
+    <section class="architecture">
+      <div class="wrap section">
+        <div class="kicker">06 • PRIVACY-PRESERVING GOVERNMENT</div>
+        <h2>Integrated service without an integrated citizen profile</h2>
+        <p class="intro">One front door for the citizen. Federated authoritative systems behind it. No routine browsing, no routine export and no AI-determined permissions.</p>
+        <div class="flow">
+          <div><strong>Authorised case</strong><small>purpose + legislation</small></div><i>→</i>
+          <div><strong>Policy gateway</strong><small>role + scope + expiry</small></div><i>→</i>
+          <div><strong>Federated source</strong><small>tax / health / identity</small></div><i>→</i>
+          <div><strong>Minimum answer</strong><small>yes / no / attribute</small></div><i>→</i>
+          <div><strong>Independent audit</strong><small>immutable log + review</small></div>
+        </div>
+        <blockquote class="rule">Government data should be searched to answer an authorised question, not searched to discover citizens worth investigating.</blockquote>
+      </div>
+    </section>
+
+    <section class="service">
+      <div class="wrap section">
+        <div class="kicker">07 • REBUILD TRUST</div>
+        <h2>Authority is a responsibility to serve, not a privilege to command.</h2>
+        <div class="columns">
+          <div><h3>Customer-service posture</h3><p>Plain language, one front door, tell-us-once administration, assistance before punitive enforcement for honest mistakes and published service levels.</p></div>
+          <div><h3>Review as a right</h3><p>Reasons, correction, human reconsideration, accessible Ombudsman review, merits review where appropriate and preserved judicial review.</p></div>
+          <div><h3>Government meets the standard</h3><p>Publish cyber maturity, privacy failures, access misuse, response times, reversal rates, compliance cost and the realised benefits of restructures and programs.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="final-call">
+      <div class="wrap">
+        <div class="kicker pale">THE QUESTION PARLIAMENT SHOULD ANSWER LAST</div>
+        <h2>What additional power is actually necessary?</h2>
+        <p>That answer should emerge after the foundations are repaired, from evidence and demonstrated public need. It should not be assumed from urgency, regulatory ambition or the political desire to be seen doing something.</p>
+      </div>
+    </section>
+
+    <section class="wrap section" id="sources">
+      <div class="kicker">08 • PRIMARY EVIDENCE</div>
+      <h2>Review the source material</h2>
+      <p class="intro">This is independent commentary, not an Australian Government publication. Facts, interpretation and recommendations should remain visibly distinct.</p>
+      <div class="sources">
+        {refs.map(([organisation, title, url], index) => (
+          <a href={url} target="_blank" rel="noopener noreferrer">
+            <span>{String(index + 1).padStart(2, '0')}</span>
+            <div><b>{organisation}</b><p>{title}</p></div>
+            <i>↗</i>
+          </a>
+        ))}
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <strong>Australian Digital Regulation Review</strong>
+      <p>Independent public-interest analysis • Not affiliated with or endorsed by the Australian Government.</p>
+      <p class="legal">This site intentionally does not reproduce the Commonwealth Coat of Arms. The Arms signify Commonwealth authority and ownership; third-party use may require written permission.</p>
+    </div>
+  </footer>
 </Base>

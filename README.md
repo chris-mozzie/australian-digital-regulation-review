@@ -1,30 +1,16 @@
-# Australian Digital Regulation Review
+# Australian Digital Regulation Review V3
 
-Independent public-interest Astro site designed for Cloudflare Workers.
+A Tier-1 policy review site built with Astro and configured for Cloudflare Workers.
 
-## Important branding note
-The visual language is inspired by the clarity and institutional restraint of Australian Government sites, but this is **not an Australian Government website**. The Commonwealth Coat of Arms has deliberately not been included. PM&C states that the Arms signify Commonwealth authority and ownership and that unauthorised third-party use may breach Australian law. Obtain written permission from PM&C before adding it.
+## V3 position
+The site recommends pausing the Online Safety Amendment in its current form, renovating Australia's digital regulatory foundations, rebuilding trust and then demonstrating which additional powers are necessary.
 
-## Local
-```bash
-npm install
-npm run dev
-```
+## Deploy
+Cloudflare Workers Builds:
+- Build command: `npx astro build`
+- Deploy command: `npx wrangler deploy`
 
-## Cloudflare Workers
-1. Create a GitHub repository and push this directory.
-2. Cloudflare Dashboard → Workers & Pages → Create → Import a repository.
-3. Framework: Astro. Build command: `npm run build`.
-4. Deploy command can be `npx wrangler deploy` where required by your Workers build configuration.
-5. Change `site` in `astro.config.mjs` to your final hostname.
+`wrangler.jsonc` uses the current Astro Cloudflare server entrypoint.
 
-CLI alternative:
-```bash
-npm install
-npx wrangler login
-npm run build
-npx wrangler deploy
-```
-
-## Editorial rule
-Keep fact, interpretation and recommendation visibly distinct. The source list deliberately prioritises Parliament, eSafety, OAIC and PM&C primary materials.
+## Branding
+This is not an Australian Government website. The Commonwealth Coat of Arms is intentionally omitted because it signifies Commonwealth authority and may require PM&C permission for third-party use.
